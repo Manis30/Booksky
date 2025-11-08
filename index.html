@@ -22,17 +22,19 @@
     <section id="bookShow" class=" pt-4 px-3  min-vh-100 ">
     </section>
     <section id="addForm">
-        <form class="d-flex addform flex-column bg-danger  p-md-5 p-2  w-50">
+        <form class="d-flex addform flex-column bg-danger  p-md-5 p-2  ">
             <h2 class="text-center text-uppercase fw-semibold fs-2 mb-3" id="formtitle">Add Book</h2>
             <input type="text" placeholder="Book Title" class="mb-3 p-2 bg-danger" required id="name">
             <input type="text" placeholder="Author name" class="mb-3 p-2 bg-danger" required id="author">
             <textarea rows="5" placeholder="Book description" class="ps-3  pt-3 bg-danger" required
                 id="description"></textarea>
             <div class="mt-3 d-flex  justify-content-center align-items-center">
-                <button type="button" class="btn btn-warning px-md-4 pt-lg-2 pb-lg-2 me-lg-3 cursor-pointer me-sm-3  me-1 pt-1 pb-1 px-2 d-block"
+                <button type="button"
+                    class="btn btn-warning px-md-4 pt-lg-2 pb-lg-2 me-lg-3 cursor-pointer me-sm-3  me-1 pt-1 pb-1 px-2 d-block"
                     onclick="closeForm()">Cancel</button>
-                <button type="button" class="btn btn-primary px-md-4 pt-lg-2 pb-lg-2  cursor-pointer pt-1 pb-1 px-2 d-block" onclick="submitForm()"
-                    id="formbtn">Submit</button>
+                <button type="button"
+                    class="btn btn-primary px-md-4 pt-lg-2 pb-lg-2  cursor-pointer pt-1 pb-1 px-2 d-block"
+                    onclick="submitForm()" id="formbtn">Submit</button>
             </div>
         </form>
     </section>
@@ -41,22 +43,22 @@
 </html>
 <script>
     const bookList = [
-  {
-    "name": "Atomic Habits",
-    "author": "James Clear",
-    "bookcontent": "A practical guide on how tiny daily habits can create remarkable long-term results through the power of consistent improvement."
-  },
-  {
-    "name": "The Alchemist",
-    "author": "Paulo Coelho",
-    "bookcontent": "A philosophical novel about a shepherd boy named Santiago who follows his dreams and discovers the meaning of life through his journey."
-  },
-  {
-    "name": "Deep Work",
-    "author": "Cal Newport",
-    "bookcontent": "A book that explains how focused, distraction-free work can drastically increase productivity and help achieve high-quality results."
-  }
-]
+        {
+            "name": "Atomic Habits",
+            "author": "James Clear",
+            "bookcontent": "A practical guide on how tiny daily habits can create remarkable long-term results through the power of consistent improvement."
+        },
+        {
+            "name": "The Alchemist",
+            "author": "Paulo Coelho",
+            "bookcontent": "A philosophical novel about a shepherd boy named Santiago who follows his dreams and discovers the meaning of life through his journey."
+        },
+        {
+            "name": "Deep Work",
+            "author": "Cal Newport",
+            "bookcontent": "A book that explains how focused, distraction-free work can drastically increase productivity and help achieve high-quality results."
+        }
+    ]
 
     let editIndex = null
     function showForm() {
