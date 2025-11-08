@@ -22,16 +22,16 @@
     <section id="bookShow" class=" pt-4 px-3  min-vh-100 ">
     </section>
     <section id="addForm">
-        <form class="d-flex addform flex-column bg-danger  p-5">
+        <form class="d-flex addform flex-column bg-danger  p-md-5 p-2  w-50">
             <h2 class="text-center text-uppercase fw-semibold fs-2 mb-3" id="formtitle">Add Book</h2>
             <input type="text" placeholder="Book Title" class="mb-3 p-2 bg-danger" required id="name">
             <input type="text" placeholder="Author name" class="mb-3 p-2 bg-danger" required id="author">
-            <textarea rows="5" cols="60" placeholder="Book description" class="ps-3 pt-3 bg-danger" required
+            <textarea rows="5" placeholder="Book description" class="ps-3  pt-3 bg-danger" required
                 id="description"></textarea>
-            <div class="d-flex justify-content-center mt-3">
-                <button type="button" class="btn btn-warning px-4 pt-2 pb-2 me-3 cursor-pointer"
+            <div class="mt-3 d-flex  justify-content-center align-items-center">
+                <button type="button" class="btn btn-warning px-md-4 pt-lg-2 pb-lg-2 me-lg-3 cursor-pointer me-sm-3  me-1 pt-1 pb-1 px-2 d-block"
                     onclick="closeForm()">Cancel</button>
-                <button type="button" class="btn btn-primary px-4 pt-2 pb-2 cursor-pointer" onclick="submitForm()"
+                <button type="button" class="btn btn-primary px-md-4 pt-lg-2 pb-lg-2  cursor-pointer pt-1 pb-1 px-2 d-block" onclick="submitForm()"
                     id="formbtn">Submit</button>
             </div>
         </form>
@@ -99,7 +99,7 @@
     function showBooks() {
         let container = '<div class="row g-3">'
         bookList.map((item, index) => {
-            container += `<div class="col-lg-4 col-6">
+            container += `<div class="col-lg-4 col-md-6 col-12">
                 <div class="bg-dark  p-3 rounded">
                     <h3 class="text-danger text-capitalize fw-semibold fs-2">${item.name}</h3><p class="text-info fs-5 fw-medium">${item.author}</p>
                     <p class="text-white fw-medium fs-6 text-capitalize">${item.bookcontent}</p>

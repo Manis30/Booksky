@@ -4,7 +4,9 @@
     font-family: Poppins;
     box-sizing: border-box;
 }
-
+/* .addform{
+    width: 50%;
+} */
 .addform input::placeholder {
     color: black;
 }
