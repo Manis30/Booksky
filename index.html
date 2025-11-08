@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booksky</title>
+    <link rel="stylesheet" href="bookskystyle.css">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section id="header"
+        class="bg-danger d-flex justify-content-between bg-opacity-50 text-light text-30  p-3 align-items-center">
+        <h4 class="fw-bold fs-1">Booksky</h4>
+        <button type="button" class="btn btn-dark px-4 fw-semibold text-uppercase cursor-pointer fs-4"
+            onclick="showForm()">Add</button>
+    </section>
+    <section id="bookShow" class=" pt-4 px-3  min-vh-100 ">
+    </section>
+    <section id="addForm">
+        <form class="d-flex addform flex-column bg-danger  p-5">
+            <h2 class="text-center text-uppercase fw-semibold fs-2 mb-3" id="formtitle">Add Book</h2>
+            <input type="text" placeholder="Book Title" class="mb-3 p-2 bg-danger" required id="name">
+            <input type="text" placeholder="Author name" class="mb-3 p-2 bg-danger" required id="author">
+            <textarea rows="5" cols="60" placeholder="Book description" class="ps-3 pt-3 bg-danger" required
+                id="description"></textarea>
+            <div class="d-flex justify-content-center mt-3">
+                <button type="button" class="btn btn-warning px-4 pt-2 pb-2 me-3 cursor-pointer"
+                    onclick="closeForm()">Cancel</button>
+                <button type="button" class="btn btn-primary px-4 pt-2 pb-2 cursor-pointer" onclick="submitForm()"
+                    id="formbtn">Submit</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>
+<script>
+    const bookList = [
+  {
+    "name": "Atomic Habits",
+    "author": "James Clear",
+    "bookcontent": "A practical guide on how tiny daily habits can create remarkable long-term results through the power of consistent improvement."
+  },
+  {
+    "name": "The Alchemist",
+    "author": "Paulo Coelho",
+    "bookcontent": "A philosophical novel about a shepherd boy named Santiago who follows his dreams and discovers the meaning of life through his journey."
+  },
+  {
+    "name": "Deep Work",
+    "author": "Cal Newport",
+    "bookcontent": "A book that explains how focused, distraction-free work can drastically increase productivity and help achieve high-quality results."
+  }
+]
+
+    let editIndex = null
+    function showForm() {
+        document.getElementById('addForm').style.display = 'flex'
+    }
+    function closeForm() {
+        document.getElementById('addForm').style.display = 'none'
+        document.getElementById('name').value = ''
+        document.getElementById('author').value = ''
+        document.getElementById('description').value = ''
+        editIndex = null
+        document.getElementById('formtitle').innerText = 'Add Book'
+        document.getElementById('formbtn').innerText = 'Submit'
+    }
+    function submitForm() {
+        let name = document.getElementById('name').value
+        let author = document.getElementById('author').value
+        let bookcontent = document.getElementById('description').value
+
+        if (editIndex != null) {
+            bookList[editIndex] = { name, author, bookcontent }
+            editIndex = null;
+            closeForm()
+            document.getElementById('name').value = ''
+            document.getElementById('author').value = ''
+            document.getElementById('description').value = ''
+        }
+        else {
+            if (name && author && bookcontent) {
+                bookList.push({ name, author, bookcontent })
+                closeForm()
+                document.getElementById('name').value = ''
+                document.getElementById('author').value = ''
+                document.getElementById('description').value = ''
+            }
+        }
+        showBooks()
+    }
+    showBooks()
+    function showBooks() {
+        let container = '<div class="row g-3">'
+        bookList.map((item, index) => {
+            container += `<div class="col-lg-4 col-6">
+                <div class="bg-dark  p-3 rounded">
+                    <h3 class="text-danger text-capitalize fw-semibold fs-2">${item.name}</h3><p class="text-info fs-5 fw-medium">${item.author}</p>
+                    <p class="text-white fw-medium fs-6 text-capitalize">${item.bookcontent}</p>
+                    <button type="button" class="btn btn-warning me-3 px-4 fw-semibold" onclick="update(${index})">Edit</button>
+                    <button type="button" class="btn btn-danger  px-4 fw-semibold" onclick="Delete(${index})">Delete</button></div>
+            </div>`
+        })
+        container += '</div>'
+        document.getElementById('bookShow').innerHTML = container
+    }
+    function Delete(index) {
+        bookList.splice(index, 1)
+        showBooks()
+    }
+    function update(index) {
+        editIndex = index
+        document.getElementById('formtitle').innerText = 'Update Book'
+        document.getElementById('formbtn').innerText = 'Update'
+        showForm()
+        document.getElementById('name').value = bookList[index].name
+        document.getElementById('author').value = bookList[index].author
+        document.getElementById('description').value = bookList[index].bookcontent
+    }
+</script>
+<script src="script.js"></script>
+<script src="bootstrap.bundle.js"></script>
